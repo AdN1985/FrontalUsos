@@ -64,7 +64,8 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
+                    <encoding>UTF-8</encoding>
+                </configurat
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
