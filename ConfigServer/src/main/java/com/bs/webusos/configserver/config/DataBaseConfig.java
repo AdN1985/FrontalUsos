@@ -25,10 +25,10 @@ public class DataBaseConfig {
     public void init(Environment env) {
         String profile = env.getActiveProfiles()[0];
         LOGGER.info("init - Profile --> {}", profile);
-        this.schema = env.getRequiredProperty("spring.datasource.jndi-name");
-        this.packageDB = env.getRequiredProperty(profile + ".jdbc.package");
-        this.package03DB = env.getRequiredProperty(profile + ".jdbc.package.03");      	
-        this.datasourceName = env.getRequiredProperty(profile + ".jdbc.datasourceName");
+        this.schema = env.getRequiredProperty("spring.datasource.schema");
+        this.packageDB = env.getRequiredProperty("spring.datasource.package");
+        this.package03DB = env.getRequiredProperty("spring.datasource.package.03");
+        this.datasourceName = env.getRequiredProperty("spring.datasource.jndi-name");
     }
 
     @Bean
