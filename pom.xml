@@ -8,6 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>ConfigServer</module>
+        <module>Home</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -1,10 +1,12 @@
-package com.bs.webusos.configserver.config;
+package com.bs.webusos.config;
 
 import com.bs.webusos.model.LogMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 
@@ -13,22 +15,23 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+@Configuration
 public class DataBaseConfig {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DataBaseConfig.class);
-	
+
+	@Value("spring.datasource.jndi-name")
 	private String datasourceName;
+    @Value("spring.datasource.schema")
     private String schema;
+    @Value("spring.datasource.package")
     private String packageDB;
+    @Value("spring.datasource.package.03")
 	private String package03DB;
 
     @Autowired
     public void init(Environment env) {
         String profile = env.getActiveProfiles()[0];
         LOGGER.info("init - Profile --> {}", profile);
-        this.schema = env.getRequiredProperty("spring.datasource.schema");
-        this.packageDB = env.getRequiredProperty("spring.datasource.package");
-        this.package03DB = env.getRequiredProperty("spring.datasource.package.03");
-        this.datasourceName = env.getRequiredProperty("spring.datasource.jndi-name");
     }
 
     @Bean
